@@ -13,10 +13,29 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
   - Đăng ký tài khoản gửi mã OTP tự động qua Gmail (sử dụng **Jakarta Angus Mail**).
   - Xác thực OTP kích hoạt tài khoản.
   - Đăng nhập, Ghi nhớ đăng nhập (Remember Me) bằng Cookie và Session.
-- **Thương mại điện tử & Đặt hàng (Đang phát triển)**:
-  - Giỏ hàng: Thêm, xóa, cập nhật số lượng giới hạn theo tồn kho.
-  - Thanh toán đơn hàng phương thức COD (Ship COD).
-  - Tra cứu lịch sử đơn hàng với bộ lọc 8 trạng thái.
+- **Thương mại điện tử & Đặt hàng (E-Commerce)**:
+  - **Giỏ hàng (Shopping Cart)**:
+    - Thêm sản phẩm/video vào giỏ hàng.
+    - Cập nhật số lượng linh hoạt bằng nút `+` / `-` hoặc nhập số trực tiếp.
+    - Kiểm soát số lượng nghiêm ngặt theo giới hạn tồn kho `Stock` (không cho phép vượt quá số lượng trong kho).
+    - Xóa từng sản phẩm hoặc làm trống toàn bộ giỏ hàng.
+  - **Thanh toán đơn hàng bằng COD (Cash On Delivery)**:
+    - Nhập họ tên, số điện thoại, địa chỉ nhận hàng và ghi chú đơn hàng.
+    - Phương thức thanh toán khi nhận hàng (Ship COD).
+    - Tự động trừ số lượng tồn kho `Stock` trong CSDL khi đặt hàng thành công.
+    - Tự động làm trống giỏ hàng và chuyển sang trang xác nhận đơn hàng thành công.
+  - **Lịch sử đặt hàng & Bộ lọc 8 Trạng thái**:
+    - Hiển thị danh sách tất cả các đơn hàng đã đặt của tài khoản.
+    - Thanh điều hướng Tabs lọc theo chính xác 8 trạng thái kèm Badge đếm số lượng:
+      1. `Đơn hàng mới` (Mặc định khi vừa đặt)
+      2. `Đã xác nhận`
+      3. `Chuẩn bị hàng`
+      4. `Vận chuyển`
+      5. `Giao hàng`
+      6. `Đã giao`
+      7. `Đơn hàng hủy`
+      8. `Đơn hàng hoàn`
+    - Cho phép khách hàng chủ động hủy đơn khi đơn hàng đang ở trạng thái `Đơn hàng mới` (tự động hoàn lại số lượng tồn kho `Stock` vào CSDL).
 
 ### 2. Phân hệ Quản trị (Admin)
 - **Admin Dashboard**: Thống kê số lượng video, danh mục, người dùng, lượt tương tác.
@@ -80,8 +99,18 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
 
 ### 2. Thiết lập Cơ sở dữ liệu
 1. Mở **SQL Server Management Studio (SSMS)**.
-2. Mở và thực thi file `database/create_database.sql` để tạo CSDL `WebDe04`.
-3. Mở và thực thi file `database/insert_records.sql` để nạp dữ liệu mẫu ban đầu.
+2. Nếu cài đặt mới từ đầu:
+   - Thực thi file `database/create_database.sql` để tạo CSDL `WebDe04` kèm các bảng `Videos` (có `Price`, `Stock`), `Orders`, `OrderItems`.
+   - Thực thi file `database/insert_records.sql` để nạp dữ liệu mẫu ban đầu (bao gồm 8 đơn hàng mẫu ở 8 trạng thái khác nhau).
+3. Nếu đã có sẵn CSDL `WebDe04` cũ:
+   - Thực thi file `database/update_database_orders.sql` để bổ sung cột `Price`, `Stock` và tạo bảng `Orders`, `OrderItems`.
+
+### 3. Kiểm thử 8 Trạng thái Đơn hàng trong Database
+Để quan sát trạng thái đơn hàng thay đổi theo thời gian thực:
+1. Đăng nhập tài khoản `user01` (mật khẩu `123456`).
+2. Vào mục **Xin chào, Trần Văn An** -> **Lịch sử đặt hàng** (hoặc URL: `http://localhost:8080/24110330_04/order-history`).
+3. Mở file `database/test_order_status.sql` trong SSMS và chạy các lệnh `UPDATE Orders SET Status = ... WHERE OrderId = 1;`.
+4. Nhấn **F5** trên trình duyệt hoặc chuyển đổi giữa các Tab trạng thái để thấy đơn hàng hiển thị chính xác theo từng trạng thái tương ứng.
 
 ### 3. Cấu hình biến môi trường / Thông tin bảo mật
 Bạn có thể cấu hình thông qua **Biến môi trường (Environment Variables)**:
