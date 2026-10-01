@@ -4,7 +4,7 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
 
 ---
 
-## 🚀 Tính năng nổi bật
+## Tính năng nổi bật
 
 ### 1. Phân hệ Người dùng (User)
 - **Xem & Khám phá Video**: Xem danh sách video theo danh mục, xem chi tiết video, tăng lượt xem.
@@ -44,7 +44,7 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
 
 ---
 
-## 🛠️ Công nghệ sử dụng (Tech Stack)
+## Công nghệ sử dụng (Tech Stack)
 
 | Thành phần | Công nghệ |
 | :--- | :--- |
@@ -60,12 +60,14 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
 
 ---
 
-## 📂 Cấu trúc thư mục
+## Cấu trúc thư mục
 
 ```text
 ├── database/
 │   ├── create_database.sql       # Script khởi tạo cơ sở dữ liệu WebDe04
-│   └── insert_records.sql        # Dữ liệu mẫu (Users, Categories, Videos...)
+│   ├── insert_records.sql        # Dữ liệu mẫu (Users, Categories, Videos...)
+│   ├── update_database_orders.sql# Script cập nhật Price, Stock và tạo bảng Orders
+│   └── test_order_status.sql     # Script kiểm thử thay đổi 8 trạng thái đơn hàng
 ├── src/
 │   ├── main/
 │   │   ├── java/vn/iotstar/
@@ -90,7 +92,7 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
 
 ---
 
-## ⚙️ Hướng dẫn cài đặt & Khởi chạy
+## Hướng dẫn cài đặt & Khởi chạy
 
 ### 1. Chuẩn bị môi trường
 - Cài đặt **JDK 21**
@@ -104,13 +106,6 @@ Dự án Hệ thống Quản lý và Chia sẻ Video trực tuyến xây dựng 
    - Thực thi file `database/insert_records.sql` để nạp dữ liệu mẫu ban đầu (bao gồm 8 đơn hàng mẫu ở 8 trạng thái khác nhau).
 3. Nếu đã có sẵn CSDL `WebDe04` cũ:
    - Thực thi file `database/update_database_orders.sql` để bổ sung cột `Price`, `Stock` và tạo bảng `Orders`, `OrderItems`.
-
-### 3. Kiểm thử 8 Trạng thái Đơn hàng trong Database
-Để quan sát trạng thái đơn hàng thay đổi theo thời gian thực:
-1. Đăng nhập tài khoản `user01` (mật khẩu `123456`).
-2. Vào mục **Xin chào, Trần Văn An** -> **Lịch sử đặt hàng** (hoặc URL: `http://localhost:8080/24110330_04/order-history`).
-3. Mở file `database/test_order_status.sql` trong SSMS và chạy các lệnh `UPDATE Orders SET Status = ... WHERE OrderId = 1;`.
-4. Nhấn **F5** trên trình duyệt hoặc chuyển đổi giữa các Tab trạng thái để thấy đơn hàng hiển thị chính xác theo từng trạng thái tương ứng.
 
 ### 3. Cấu hình biến môi trường / Thông tin bảo mật
 Bạn có thể cấu hình thông qua **Biến môi trường (Environment Variables)**:
@@ -143,9 +138,16 @@ Deploy file `target/24110330_04.war` lên Apache Tomcat hoặc cấu hình trự
 - URL người dùng: `http://localhost:8080/24110330_04/`
 - Trang quản trị: `http://localhost:8080/24110330_04/admin/home`
 
+### 5. Kiểm thử 8 Trạng thái Đơn hàng trong Database
+Để quan sát trạng thái đơn hàng thay đổi theo thời gian thực:
+1. Đăng nhập tài khoản `user01` (mật khẩu `123456`).
+2. Vào mục **Xin chào, Trần Văn An** -> **Lịch sử đặt hàng** (hoặc URL: `http://localhost:8080/24110330_04/order-history`).
+3. Mở file `database/test_order_status.sql` trong SSMS và chạy các lệnh `UPDATE Orders SET Status = ... WHERE OrderId = 1;`.
+4. Nhấn **F5** trên trình duyệt hoặc chuyển đổi giữa các Tab trạng thái để thấy đơn hàng hiển thị chính xác theo từng trạng thái tương ứng.
+
 ---
 
-## 👥 Tài khoản mặc định
+## Tài khoản mặc định
 
 | Vai trò | Tên đăng nhập | Mật khẩu | Ghi chú |
 | :--- | :--- | :--- | :--- |
