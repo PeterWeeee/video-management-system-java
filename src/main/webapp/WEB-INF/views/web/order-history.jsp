@@ -234,7 +234,8 @@
                         </div>
                     </c:forEach>
                 </div>
-        </div>
+            </c:otherwise>
+        </c:choose>
     </div>
 
     <!-- Footer -->
