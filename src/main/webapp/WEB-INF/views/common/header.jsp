@@ -37,6 +37,18 @@
                     </c:if>
                 </ul>
 
+                <!-- Giỏ hàng -->
+                <ul class="navbar-nav me-3 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link position-relative px-3 py-1 btn btn-outline-light text-white" href="${pageContext.request.contextPath}/cart">
+                            <i class="fa-solid fa-cart-shopping me-1"></i> Giỏ hàng
+                            <span class="badge bg-danger rounded-pill ms-1">
+                                ${sessionScope.cartTotalItems != null ? sessionScope.cartTotalItems : 0}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+
                 <!-- Khu vực đăng nhập / đăng ký góc phải -->
                 <ul class="navbar-nav ms-auto align-items-center">
                     <c:choose>
@@ -45,12 +57,15 @@
                                 <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown">
                                     <i class="fa-solid fa-circle-user"></i> Xin chào, <strong>${sessionScope.currentUser.fullname != null ? sessionScope.currentUser.fullname : sessionScope.currentUser.username}</strong>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
+                                <ul class="dropdown-menu dropdown-menu-end shadow">
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/order-history"><i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i> Lịch sử đặt hàng</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/cart"><i class="fa-solid fa-cart-shopping me-2 text-success"></i> Xem giỏ hàng</a></li>
+                                    <li><hr class="dropdown-divider"></li>
                                     <c:if test="${sessionScope.currentUser.admin == true}">
-                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/home"><i class="fa-solid fa-gear"></i> Quản trị hệ thống</a></li>
+                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/home"><i class="fa-solid fa-gear me-2 text-warning"></i> Quản trị hệ thống</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     </c:if>
-                                    <li><a class="dropdown-item text-danger" href="${pageContext.request.contextPath}/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+                                    <li><a class="dropdown-item text-danger" href="${pageContext.request.contextPath}/logout"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </c:when>

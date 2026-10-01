@@ -73,16 +73,37 @@
                                         ${v.description}
                                     </p>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center pt-2 border-top text-muted small mt-2">
+                                <div class="d-flex justify-content-between align-items-center my-2 pt-2 border-top">
+                                    <span class="fw-bold text-danger">${v.formattedPrice}</span>
+                                    <c:choose>
+                                        <c:when test="${v.stock > 0}">
+                                            <span class="badge bg-success-subtle text-success border border-success-subtle">Còn ${v.stock} suất</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="badge bg-danger-subtle text-danger">Hết hàng</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center text-muted small">
                                     <span><i class="fa-solid fa-eye"></i> ${v.views} views</span>
                                     <span><i class="fa-solid fa-thumbs-up text-primary"></i> ${v.likeCount}</span>
                                     <span><i class="fa-solid fa-share text-success"></i> ${v.shareCount}</span>
                                 </div>
                             </div>
-                            <div class="card-footer bg-transparent border-0 pt-0 pb-3">
-                                <a href="${pageContext.request.contextPath}/video/detail?id=${v.videoId}" class="btn btn-sm btn-primary w-100">
-                                    <i class="fa-solid fa-circle-info"></i> Xem chi tiết
+                            <div class="card-footer bg-transparent border-0 pt-0 pb-3 d-flex gap-2">
+                                <a href="${pageContext.request.contextPath}/video/detail?id=${v.videoId}" class="btn btn-sm btn-outline-secondary w-50">
+                                    <i class="fa-solid fa-circle-info"></i> Chi tiết
                                 </a>
+                                <c:choose>
+                                    <c:when test="${v.stock > 0}">
+                                        <a href="${pageContext.request.contextPath}/cart?action=add&videoId=${v.videoId}" class="btn btn-sm btn-primary w-50">
+                                            <i class="fa-solid fa-cart-plus"></i> Mua ngay
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="btn btn-sm btn-secondary w-50" disabled>Hết hàng</button>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>

@@ -74,6 +74,18 @@
                     <p><strong>Tiêu đề:</strong> ${video.title}</p>
                     <p><strong>Mã video:</strong> ${video.videoId}</p>
                     <p><strong>Category name:</strong> <span class="badge bg-info text-dark">${video.categoryName}</span></p>
+                    <p><strong>Giá bán:</strong> <span class="fs-5 fw-bold text-danger">${video.formattedPrice}</span></p>
+                    <p>
+                        <strong>Tình trạng:</strong>
+                        <c:choose>
+                            <c:when test="${video.stock > 0}">
+                                <span class="badge bg-success">Còn ${video.stock} suất</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="badge bg-danger">Hết hàng</span>
+                            </c:otherwise>
+                        </c:choose>
+                    </p>
                     <p><strong>View:</strong> ${video.views}</p>
                     <p>
                         <span class="btn btn-outline-success btn-sm disabled me-2">
@@ -83,6 +95,24 @@
                             <i class="fa-solid fa-thumbs-up"></i> Like(${video.likeCount})
                         </span>
                     </p>
+                    <c:choose>
+                        <c:when test="${video.stock > 0}">
+                            <form action="${pageContext.request.contextPath}/cart" method="post" class="d-flex align-items-center gap-2 mt-3 p-2 bg-light rounded border">
+                                <input type="hidden" name="action" value="add">
+                                <input type="hidden" name="videoId" value="${video.videoId}">
+                                <label class="fw-bold me-1 text-secondary small">Số lượng:</label>
+                                <input type="number" name="quantity" value="1" min="1" max="${video.stock}" class="form-control form-control-sm text-center fw-bold" style="width: 70px;">
+                                <button type="submit" class="btn btn-primary btn-sm px-3 fw-bold">
+                                    <i class="fa-solid fa-cart-plus me-1"></i> Thêm vào giỏ
+                                </button>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="alert alert-warning py-2 px-3 mt-3 mb-0 small">
+                                <i class="fa-solid fa-bell me-1"></i> Sản phẩm hiện đang tạm hết hàng.
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
 

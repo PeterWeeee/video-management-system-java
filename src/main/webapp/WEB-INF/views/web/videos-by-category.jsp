@@ -118,15 +118,34 @@
                                         <strong>View:</strong> ${v.views}
                                     </div>
                                     <div class="video-info-line">
-                                        <span class="badge bg-success">Share(${v.shareCount})</span>
+                                        <strong>Giá:</strong> <span class="fw-bold text-danger">${v.formattedPrice}</span>
+                                        <c:choose>
+                                            <c:when test="${v.stock > 0}">
+                                                <span class="badge bg-success-subtle text-success border border-success-subtle ms-1">Kho: ${v.stock}</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="badge bg-danger-subtle text-danger ms-1">Hết hàng</span>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <div class="video-info-line">
-                                        <span class="badge bg-primary">Like(${v.likeCount})</span>
+                                        <span class="badge bg-success">Share(${v.shareCount})</span>
+                                        <span class="badge bg-primary ms-1">Like(${v.likeCount})</span>
                                     </div>
-                                    <div class="mt-2 text-end">
+                                    <div class="mt-2 d-flex justify-content-between align-items-center">
                                         <a href="${pageContext.request.contextPath}/video/detail?id=${v.videoId}" class="btn btn-sm btn-outline-info">
-                                            Xem chi tiết &raquo;
+                                            Chi tiết &raquo;
                                         </a>
+                                        <c:choose>
+                                            <c:when test="${v.stock > 0}">
+                                                <a href="${pageContext.request.contextPath}/cart?action=add&videoId=${v.videoId}" class="btn btn-sm btn-primary">
+                                                    <i class="fa-solid fa-cart-plus me-1"></i> Mua
+                                                </a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="btn btn-sm btn-secondary" disabled>Hết</button>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </td>
                             </c:forEach>
