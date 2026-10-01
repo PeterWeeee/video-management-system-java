@@ -1,0 +1,37 @@
+# Maven build output
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Secrets and local configurations
+mail.properties
+src/main/resources/mail.properties
+.env
+*.env
+*.local
+
+# Eclipse metadata
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Temporary screenshots & doc generation scratch
+doc_screenshots/
+screen.png
+*.log

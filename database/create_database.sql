@@ -1,0 +1,59 @@
+CREATE DATABASE WebDe04;
+GO
+
+USE WebDe04;
+GO
+
+CREATE TABLE Category (
+    CategoryId INT IDENTITY(1,1) PRIMARY KEY,
+    Categoryname NVARCHAR(100) NULL,
+    Categorycode NVARCHAR(100) NULL,
+    Images NVARCHAR(500) NULL,
+    Status BIT NULL
+);
+GO
+
+CREATE TABLE Users (
+    Username NVARCHAR(50) NOT NULL PRIMARY KEY,
+    Password NVARCHAR(50) NOT NULL,
+    Phone NVARCHAR(15) NULL,
+    Fullname NVARCHAR(50) NULL,
+    Email NVARCHAR(150) NULL,
+    Admin BIT NULL,
+    Active BIT NULL,
+    Images NVARCHAR(500) NULL
+);
+GO
+
+CREATE TABLE Videos (
+    VideoId NVARCHAR(50) NOT NULL PRIMARY KEY,
+    Title NVARCHAR(200) NULL,
+    Poster NVARCHAR(50) NULL,
+    Views INT NULL,
+    Description NVARCHAR(500) NULL,
+    Active BIT NULL,
+    CategoryId INT NULL,
+    CONSTRAINT FK_Videos_Category FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId) ON DELETE SET NULL ON UPDATE CASCADE
+);
+GO
+
+CREATE TABLE Shares (
+    ShareId INT IDENTITY(1,1) PRIMARY KEY,
+    Emails NVARCHAR(50) NULL,
+    SharedDate DATE NULL,
+    Username NVARCHAR(50) NULL,
+    VideoId NVARCHAR(50) NULL,
+    CONSTRAINT FK_Shares_Users FOREIGN KEY (Username) REFERENCES Users(Username) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_Shares_Videos FOREIGN KEY (VideoId) REFERENCES Videos(VideoId) ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
+
+CREATE TABLE Favorites (
+    FavoriteId INT IDENTITY(1,1) PRIMARY KEY,
+    LikedDate DATE NULL,
+    VideoId NVARCHAR(50) NULL,
+    Username NVARCHAR(50) NULL,
+    CONSTRAINT FK_Favorites_Videos FOREIGN KEY (VideoId) REFERENCES Videos(VideoId) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_Favorites_Users FOREIGN KEY (Username) REFERENCES Users(Username) ON DELETE CASCADE ON UPDATE CASCADE
+);
+GO
