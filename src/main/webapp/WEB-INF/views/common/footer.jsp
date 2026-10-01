@@ -14,3 +14,12 @@
 
 <!-- Bootstrap 5 JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Đảm bảo tất cả dropdown Bootstrap hoạt động ổn định
+    document.addEventListener("DOMContentLoaded", function () {
+        var dropdownTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+        dropdownTriggerList.forEach(function (dropdownTriggerEl) {
+            new bootstrap.Dropdown(dropdownTriggerEl);
+        });
+    });
+</script>

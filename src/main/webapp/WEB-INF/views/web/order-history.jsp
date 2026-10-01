@@ -234,28 +234,10 @@
                         </div>
                     </c:forEach>
                 </div>
-            </c:otherwise>
-        </c:choose>
-
-        <!-- Hộp hướng dẫn kiểm thử database cho người dùng / giảng viên -->
-        <div class="alert alert-info border-info-subtle mt-4 shadow-sm" role="alert">
-            <h6 class="alert-heading fw-bold mb-2">
-                <i class="fa-solid fa-database me-2"></i> Hướng dẫn kiểm thử thay đổi 8 trạng thái đơn hàng trong Database
-            </h6>
-            <p class="small mb-1">
-                Để quan sát trạng thái đơn hàng thay đổi theo thời gian thực, bạn có thể thực thi lệnh SQL trong file 
-                <code>database/test_order_status.sql</code> trên SSMS:
-            </p>
-            <pre class="bg-dark text-light p-2 rounded small mb-0"><code>UPDATE Orders SET Status = N'Đã xác nhận' WHERE OrderId = [Mã_Đơn];
--- Các trạng thái: N'Đơn hàng mới', N'Đã xác nhận', N'Chuẩn bị hàng', N'Vận chuyển', N'Giao hàng', N'Đã giao', N'Đơn hàng hủy', N'Đơn hàng hoàn'</code></pre>
-            <p class="small mb-0 mt-1">Sau khi chạy lệnh SQL, bấm <strong>F5 (Refresh)</strong> hoặc bấm vào các Tab phía trên để kiểm tra kết quả lọc tương ứng.</p>
         </div>
     </div>
 
     <!-- Footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

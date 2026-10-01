@@ -54,10 +54,10 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.currentUser}">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="javascript:void(0)" id="userDropdownNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-circle-user"></i> Xin chào, <strong>${sessionScope.currentUser.fullname != null ? sessionScope.currentUser.fullname : sessionScope.currentUser.username}</strong>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdownNav">
                                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/order-history"><i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i> Lịch sử đặt hàng</a></li>
                                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/cart"><i class="fa-solid fa-cart-shopping me-2 text-success"></i> Xem giỏ hàng</a></li>
                                     <li><hr class="dropdown-divider"></li>
