@@ -27,20 +27,20 @@ VALUES
 ('user12', '123456', '0987000012', N'Lý Hải Phong', 'phong.lh@gmail.com', 0, 1, 'https://ui-avatars.com/api/?name=Ly+Phong');
 GO
 
-INSERT INTO Videos (VideoId, Title, Poster, Views, Description, Active, CategoryId)
+INSERT INTO Videos (VideoId, Title, Poster, Views, Description, Active, CategoryId, Price, Stock)
 VALUES 
-('V01', N'Hướng dẫn Lập trình Java Cơ bản cho Người mới bắt đầu', 'https://picsum.photos/id/1/400/250', 1250, N'Khóa học Java căn bản từ biến, vòng lặp đến lập trình hướng đối tượng OOP chi tiết.', 1, 1),
-('V02', N'Lập trình Hướng đối tượng OOP trong Java nâng cao', 'https://picsum.photos/id/2/400/250', 980, N'Tìm hiểu sâu về Kế thừa, Đa hình, Trừu tượng hóa và Đóng gói trong Java.', 1, 1),
-('V03', N'Java Collection Framework toàn tập', 'https://picsum.photos/id/3/400/250', 840, N'Hướng dẫn sử dụng List, Set, Map, HashMap, ArrayList và tối ưu hóa hiệu năng.', 1, 1),
-('V04', N'Xử lý Đa luồng Multithreading trong Java', 'https://picsum.photos/id/4/400/250', 620, N'Làm chủ Thread, Runnable, ExecutorService, Lock và Synchronized.', 1, 1),
-('V05', N'Lập trình Mạng Socket trong Java', 'https://picsum.photos/id/5/400/250', 450, N'Xây dựng ứng dụng Chat Client - Server với Socket TCP/IP.', 1, 1),
-('V06', N'Java JDBC Kết nối SQL Server thực chiến', 'https://picsum.photos/id/6/400/250', 1560, N'Kết nối Java với SQL Server thực hiện các thao tác CRUD cơ bản và nâng cao.', 1, 1),
-('V07', N'Xây dựng Website với Java Servlet và JSP', 'https://picsum.photos/id/7/400/250', 2100, N'Hướng dẫn chi tiết kiến trúc MVC 3 lớp kết hợp Servlet JSP và Sitemesh.', 1, 2),
-('V08', N'Tạo Form Đăng nhập và Session trong Servlet', 'https://picsum.photos/id/8/400/250', 1780, N'Bảo mật ứng dụng web với Session, Cookie và Filter xác thực đăng nhập.', 1, 2),
-('V09', N'Tích hợp gửi OTP kích hoạt tài khoản qua Gmail', 'https://picsum.photos/id/9/400/250', 1420, N'Sử dụng Jakarta Mail gửi mã OTP xác nhận kích hoạt tài khoản đăng ký.', 1, 2),
-('V10', N'Thiết kế CSDL Quan hệ Chuẩn hóa SQL Server', 'https://picsum.photos/id/10/400/250', 890, N'Hướng dẫn chuẩn hóa 1NF, 2NF, 3NF và tối ưu truy vấn Indexing.', 1, 3),
-('V11', N'Viết Stored Procedure và Trigger trong SQL Server', 'https://picsum.photos/id/11/400/250', 730, N'Nâng cao kỹ năng quản trị CSDL với Proc, Trigger và Transaction.', 1, 3),
-('V12', N'Nhập môn Trí tuệ nhân tạo và Machine Learning', 'https://picsum.photos/id/12/400/250', 3200, N'Tổng quan về AI, Deep Learning và các mô hình ngôn ngữ lớn hiện đại.', 1, 4);
+('V01', N'Hướng dẫn Lập trình Java Cơ bản cho Người mới bắt đầu', 'https://picsum.photos/id/1/400/250', 1250, N'Khóa học Java căn bản từ biến, vòng lặp đến lập trình hướng đối tượng OOP chi tiết.', 1, 1, 199000, 10),
+('V02', N'Lập trình Hướng đối tượng OOP trong Java nâng cao', 'https://picsum.photos/id/2/400/250', 980, N'Tìm hiểu sâu về Kế thừa, Đa hình, Trừu tượng hóa và Đóng gói trong Java.', 1, 1, 250000, 8),
+('V03', N'Java Collection Framework toàn tập', 'https://picsum.photos/id/3/400/250', 840, N'Hướng dẫn sử dụng List, Set, Map, HashMap, ArrayList và tối ưu hóa hiệu năng.', 1, 1, 180000, 12),
+('V04', N'Xử lý Đa luồng Multithreading trong Java', 'https://picsum.photos/id/4/400/250', 620, N'Làm chủ Thread, Runnable, ExecutorService, Lock và Synchronized.', 1, 1, 320000, 5),
+('V05', N'Lập trình Mạng Socket trong Java', 'https://picsum.photos/id/5/400/250', 450, N'Xây dựng ứng dụng Chat Client - Server với Socket TCP/IP.', 1, 1, 210000, 7),
+('V06', N'Java JDBC Kết nối SQL Server thực chiến', 'https://picsum.photos/id/6/400/250', 1560, N'Kết nối Java với SQL Server thực hiện các thao tác CRUD cơ bản và nâng cao.', 1, 1, 290000, 15),
+('V07', N'Xây dựng Website với Java Servlet và JSP', 'https://picsum.photos/id/7/400/250', 2100, N'Hướng dẫn chi tiết kiến trúc MVC 3 lớp kết hợp Servlet JSP và Sitemesh.', 1, 2, 350000, 20),
+('V08', N'Tạo Form Đăng nhập và Session trong Servlet', 'https://picsum.photos/id/8/400/250', 1780, N'Bảo mật ứng dụng web với Session, Cookie và Filter xác thực đăng nhập.', 1, 2, 150000, 6),
+('V09', N'Tích hợp gửi OTP kích hoạt tài khoản qua Gmail', 'https://picsum.photos/id/9/400/250', 1420, N'Sử dụng Jakarta Mail gửi mã OTP xác nhận kích hoạt tài khoản đăng ký.', 1, 2, 220000, 9),
+('V10', N'Thiết kế CSDL Quan hệ Chuẩn hóa SQL Server', 'https://picsum.photos/id/10/400/250', 890, N'Hướng dẫn chuẩn hóa 1NF, 2NF, 3NF và tối ưu truy vấn Indexing.', 1, 3, 175000, 14),
+('V11', N'Viết Stored Procedure và Trigger trong SQL Server', 'https://picsum.photos/id/11/400/250', 730, N'Nâng cao kỹ năng quản trị CSDL với Proc, Trigger và Transaction.', 1, 3, 280000, 11),
+('V12', N'Nhập môn Trí tuệ nhân tạo và Machine Learning', 'https://picsum.photos/id/12/400/250', 3200, N'Tổng quan về AI, Deep Learning và các mô hình ngôn ngữ lớn hiện đại.', 1, 4, 450000, 4);
 GO
 
 INSERT INTO Shares (Emails, SharedDate, Username, VideoId)
@@ -70,4 +70,47 @@ VALUES
 ('2026-09-10', 'V07', 'thainguyen'),
 ('2026-09-11', 'V02', 'user04'),
 ('2026-09-12', 'V03', 'user05');
+GO
+
+-- Dữ liệu mẫu đơn hàng với cả 8 trạng thái để kiểm thử lọc đơn hàng
+-- Trạng thái 1: Đơn hàng mới
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -1, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 449000, N'Đơn hàng mới', N'Giao giờ hành chính');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V01', 199000, 1);
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V02', 250000, 1);
+
+-- Trạng thái 2: Đã xác nhận
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -2, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 350000, N'Đã xác nhận', N'Gọi trước khi giao 15 phút');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V07', 350000, 1);
+
+-- Trạng thái 3: Chuẩn bị hàng
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -3, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 320000, N'Chuẩn bị hàng', N'Đóng gói kèm đĩa quà tặng');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V04', 320000, 1);
+
+-- Trạng thái 4: Vận chuyển
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -4, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 290000, N'Vận chuyển', N'Đang chuyển về kho quận');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V06', 290000, 1);
+
+-- Trạng thái 5: Giao hàng
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -5, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 220000, N'Giao hàng', N'Shipper đang đi giao');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V09', 220000, 1);
+
+-- Trạng thái 6: Đã giao
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -6, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 450000, N'Đã giao', N'Khách đã nhận hàng và trả tiền COD');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V12', 450000, 1);
+
+-- Trạng thái 7: Đơn hàng hủy
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -7, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 180000, N'Đơn hàng hủy', N'Khách hủy đơn do đặt nhầm');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V03', 180000, 1);
+
+-- Trạng thái 8: Đơn hàng hoàn
+INSERT INTO Orders (Username, OrderDate, ReceiverName, ReceiverPhone, ReceiverAddress, PaymentMethod, TotalAmount, Status, Notes)
+VALUES ('user01', DATEADD(DAY, -8, GETDATE()), N'Trần Văn An', '0987000001', N'Số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM', N'COD', 210000, N'Đơn hàng hoàn', N'Khách đi vắng nhiều ngày, không giao được');
+INSERT INTO OrderItems (OrderId, VideoId, Price, Quantity) VALUES (SCOPE_IDENTITY(), 'V05', 210000, 1);
 GO
