@@ -41,4 +41,9 @@ public class VideoServiceImpl_24110330 implements IVideoService_24110330 {
     public int countAll() {
         return videoDao.countAll();
     }
+
+    @Override
+    public boolean updateStock(String videoId, int quantityToDeduct) {
+        return videoDao.updateStock(videoId, quantityToDeduct);
+    }
 }

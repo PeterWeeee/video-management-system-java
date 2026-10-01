@@ -124,6 +124,21 @@ public class VideoDaoImpl_24110330 implements IVideoDao_24110330 {
         return 0;
     }
 
+    @Override
+    public boolean updateStock(String videoId, int quantityToDeduct) {
+        String sql = "UPDATE Videos SET Stock = Stock - ? WHERE VideoId = ? AND Stock >= ?";
+        try (Connection conn = DBConnect_24110330.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, quantityToDeduct);
+            ps.setString(2, videoId);
+            ps.setInt(3, quantityToDeduct);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private VideoModel_24110330 mapResultSetToVideoWithDetails(ResultSet rs) throws Exception {
         VideoModel_24110330 video = new VideoModel_24110330();
         video.setVideoId(rs.getString("VideoId"));
@@ -136,6 +151,16 @@ public class VideoDaoImpl_24110330 implements IVideoDao_24110330 {
         video.setCategoryName(rs.getString("Categoryname"));
         video.setShareCount(rs.getInt("ShareCount"));
         video.setLikeCount(rs.getInt("LikeCount"));
+        try {
+            if (rs.getObject("Price") != null) {
+                video.setPrice(rs.getDouble("Price"));
+            }
+        } catch (Exception ignored) {}
+        try {
+            if (rs.getObject("Stock") != null) {
+                video.setStock(rs.getInt("Stock"));
+            }
+        } catch (Exception ignored) {}
         return video;
     }
 }

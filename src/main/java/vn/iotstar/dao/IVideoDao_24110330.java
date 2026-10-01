@@ -9,4 +9,5 @@ public interface IVideoDao_24110330 {
     int countByCategoryId(int categoryId);
     List<VideoModel_24110330> findAllPaged(int page, int pageSize);
     int countAll();
+    boolean updateStock(String videoId, int quantityToDeduct);
 }

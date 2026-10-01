@@ -10,4 +10,5 @@ public interface IVideoService_24110330 {
     int getTotalPagesByCategory(int categoryId, int pageSize);
     List<VideoModel_24110330> getAllPaged(int page, int pageSize);
     int countAll();
+    boolean updateStock(String videoId, int quantityToDeduct);
 }

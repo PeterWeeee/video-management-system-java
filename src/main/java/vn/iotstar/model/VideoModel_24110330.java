@@ -12,6 +12,8 @@ public class VideoModel_24110330 implements Serializable {
     private String description;
     private Boolean active;
     private Integer categoryId;
+    private double price = 150000;
+    private int stock = 10;
 
     // Các trường hỗ trợ hiển thị giao diện Câu 4 và Câu 5
     private String categoryName;
@@ -30,6 +32,19 @@ public class VideoModel_24110330 implements Serializable {
         this.description = description;
         this.active = active;
         this.categoryId = categoryId;
+    }
+
+    public VideoModel_24110330(String videoId, String title, String poster, Integer views, String description,
+            Boolean active, Integer categoryId, double price, int stock) {
+        this.videoId = videoId;
+        this.title = title;
+        this.poster = poster;
+        this.views = views;
+        this.description = description;
+        this.active = active;
+        this.categoryId = categoryId;
+        this.price = price;
+        this.stock = stock;
     }
 
     public String getVideoId() {
@@ -112,9 +127,29 @@ public class VideoModel_24110330 implements Serializable {
         this.likeCount = likeCount;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getFormattedPrice() {
+        return String.format("%,.0f đ", price);
+    }
+
     @Override
     public String toString() {
         return "VideoModel_24110330 [videoId=" + videoId + ", title=" + title + ", categoryName=" + categoryName
-                + ", views=" + views + "]";
+                + ", views=" + views + ", price=" + price + ", stock=" + stock + "]";
     }
 }
